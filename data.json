@@ -1,0 +1,30 @@
+[
+  {
+    "accepted": ["faizan1234dar@gmail.com"],
+    "rejected": [],
+    "ehlo": ["8BITMIME", "AUTH PLAIN LOGIN", "Ok"],
+    "envelopeTime": 21,
+    "messageTime": 151,
+    "messageSize": 435,
+    "response": "250 Ok 0109019ae3151257-7817a016-cb22-4d40-bcd6-7e6ff1d94c2c-000000",
+    "envelope": {
+      "from": "faizan@imperialplatforms-update.com",
+      "to": ["faizan1234dar@gmail.com"]
+    },
+    "messageId": "<05bcba35-042c-d749-33f9-32e028359fa9@imperialplatforms-update.com>"
+  },
+  {
+    "accepted": ["faizan1234dsr@gmail.com"],
+    "rejected": [],
+    "ehlo": ["8BITMIME", "AUTH PLAIN LOGIN", "Ok"],
+    "envelopeTime": 31,
+    "messageTime": 144,
+    "messageSize": 435,
+    "response": "250 Ok 0109019ae319a670-c5d7f227-be35-45fe-b4e2-aff1c87dccd1-000000",
+    "envelope": {
+      "from": "faizan@imperialplatforms-update.com",
+      "to": ["faizan1234dsr@gmail.com"]
+    },
+    "messageId": "<6a3854a8-ac23-7b42-38f4-4c3ef3ecc397@imperialplatforms-update.com>"
+  }
+]

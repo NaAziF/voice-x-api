@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id             Int               @id @default(autoincrement())
+  username       String
+  email          String            @unique
+  phone          String?
+  language       String
+  is_paid        Boolean           @default(false)
+  is_active      Boolean           @default(true)
+  created_at     DateTime          @default(now())
+  updated_at     DateTime?         @updatedAt
+  userRecordings user_recordings[]
+}
+
+model work_pdfs {
+  id             Int               @id @default(autoincrement())
+  name           String
+  url            String            @unique
+  language       String
+  is_active      Boolean           @default(true)
+  created_at     DateTime          @default(now())
+  updated_at     DateTime          @updatedAt
+  userRecordings user_recordings[]
+}
+
+model user_recordings {
+  id            Int      @id @default(autoincrement())
+  recording_url String
+  pdf_id        Int
+  user_id       Int
+  is_completed  Boolean  @default(true)
+  created_at    DateTime @default(now())
+  updated_at    DateTime @updatedAt
+
+  work_pdfs work_pdfs @relation(fields: [pdf_id], references: [id])
+  users     users     @relation(fields: [user_id], references: [id])
+}
