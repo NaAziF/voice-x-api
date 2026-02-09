@@ -1,12 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { UserCreateDto } from './user.dto';
+import { MailerService } from '@nestjs-modules/mailer/dist';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(
+    private readonly prisma: PrismaService,
+    private Mail: MailerService,
+  ) {}
 
   async findAll() {
+    await this.Mail.sendMail({
+      to: 'faizan.dar@imperialplatforms.com',
+      subject: 'Test Email from NestJS',
+      text: 'This is a test email sent from the NestJS application.',
+    });
+
     return await this.prisma.users.findMany({
       where: { is_active: true },
     });

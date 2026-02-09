@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { S3Service } from 'src/aws/s3/s3.service';
+import { Express } from 'express';
 
 @Injectable()
 export class WorkService {
@@ -22,19 +23,15 @@ export class WorkService {
     });
   }
 
-  async addWorkToUser(
-    userId: number,
-    workId: number,
-    recording: Express.Multer.File[],
-  ) {
+  async addWorkToUser(recording: Express.Multer.File[]) {
     const data = await this.s3Service.upload(recording);
     if (data.length === 0) {
       throw new Error('No file uploaded');
     }
     const work = await this.prisma.user_recordings.create({
       data: {
-        user_id: userId,
-        pdf_id: workId,
+        user_id: 1,
+        pdf_id: 1,
         recording_url: data[0].doc_path,
       },
     });
